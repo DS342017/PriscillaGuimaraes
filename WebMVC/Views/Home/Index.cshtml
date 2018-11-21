@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebMVC.Models.PedidoMVC>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+
+
+<p>
+    <h4>@Html.ActionLink("Adicionar Novo Pedido", "AdicionarPedidos", "Home")</h4>
+
+</p>
+<br />
+<br />
+
+<h3>Lista de Pedidos:</h3>
+<br />
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nomeMedicamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qntdeMedicamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataEntrega)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomeMedicamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.qntdeMedicamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataEntrega)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EditarPedidos", new { id = item.idPedido }) |
+
+                @Html.ActionLink("Excluir Pedido", "Delete", new { id = item.idPedido })
+            </td>
+        </tr>
+    }
+
+</table>
